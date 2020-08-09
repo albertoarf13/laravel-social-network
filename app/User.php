@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Follow;
 use Illuminate\Support\Facades\DB;
+use App\Profile;
 
 class User extends Authenticatable
 {
@@ -63,5 +64,9 @@ class User extends Authenticatable
                             ');
         
         //return $this->hasMany('App\Follow');
+    }
+
+    public function profile(){
+        return $this->hasOne('App\Profile');
     }
 }

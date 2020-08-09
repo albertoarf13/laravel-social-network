@@ -29,7 +29,7 @@ Route::resource('/posts', "PostsController");
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/profile/{id}', 'HomeController@profile');
+Route::get('/profile/{id}', 'ProfilesController@profile');
 
 Route::post('/comments/{post}', 'CommentsController@store');
 Route::delete('/comments/{id}', 'CommentsController@destroy');
