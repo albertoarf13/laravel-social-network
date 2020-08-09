@@ -43,27 +43,20 @@ class ProfilesController extends Controller
     public function update(Request $request, $id)
     {
 
-        // Get variables from request
-        $bio = $request->bio;
-        $instagram = $request->instagram;
-        $website = $request->website;
-        $pais = $request->pais;
-        $email = $request->email;
-
         //Update profile
         $profile = Profile::where('user_id', $id)->first();
 
-        $profile->bio = $bio;
-        $profile->instagram = $instagram;
-        $profile->website = $website;
-        $profile->pais = $pais;
+        $profile->bio = $request->bio;
+        $profile->instagram = $request->instagram;
+        $profile->website = $request->website;
+        $profile->pais = $request->pais;
 
         $profile->save();
 
 
         //Update user email
         $user = User::find(auth()->user()->id);
-        $user->email = $email;
+        $user->email = $request->email;
         $user->save();
 
 
