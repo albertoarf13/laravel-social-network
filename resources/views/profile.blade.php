@@ -13,7 +13,7 @@
     <h1>Profile</h1>
 
     <div class="card card-body">
-        <h2>{{$user->name}}</h2>
+        <h2 style="margin-bottom: 1em;">{{$user->name}}</h2>
 
         @if($profile_exists)
 

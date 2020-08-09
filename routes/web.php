@@ -30,6 +30,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile/{id}', 'ProfilesController@profile');
+Route::get('/editProfile', 'ProfilesController@editProfile');
+Route::post('/editProfile/{id}', 'ProfilesController@update');
 
 Route::post('/comments/{post}', 'CommentsController@store');
 Route::delete('/comments/{id}', 'CommentsController@destroy');
