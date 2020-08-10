@@ -56,11 +56,21 @@ class ProfilesController extends Controller
 
         //Update user email
         $user = User::find(auth()->user()->id);
-        $user->email = $request->email;
-        $user->save();
+        $email = $request->email;
+        
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+
+            $user->email = $request->email;
+            $user->save();
+            return redirect('http://localhost/lsapp/public/editProfile')->with('success', 'Profile updated');
+            
+        }else{
+
+            return redirect('http://localhost/lsapp/public/editProfile')->with('error', 'Email is not valid');
+
+        }
 
 
-        return redirect('http://localhost/lsapp/public/editProfile')->with('success', 'Profile updated');
 
     }
 }
