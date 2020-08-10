@@ -29,11 +29,7 @@
 
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/lsapp/public/">Home</a>
-                    </li>
-            
-                    <li class="nav-item">
-                        <a class="nav-link" href="http://localhost/lsapp/public/about">Feed</a>
+                        <a class="nav-link" href="http://localhost/lsapp/public/">Feed</a>
                     </li>
             
                     <li class="nav-item">

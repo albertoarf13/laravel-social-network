@@ -12,15 +12,15 @@ class PagesController extends Controller
         $this->middleware('auth', ['except' => ['index', 'services']]);
     }
     
-    public function about(){
+    public function feed(){
 
-
+ 
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
         $feed_posts = $user->feed_posts();
     
-        return view('pages/about')->with('feed_posts', $feed_posts);
+        return view('pages/feed')->with('feed_posts', $feed_posts);
 
     }
 
