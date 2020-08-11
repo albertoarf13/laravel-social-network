@@ -19,6 +19,7 @@ class ProfilesController extends Controller
 
         $user = User::find($id);
         $profile_info = $user->profile;
+        $postsArray = $user->posts;
 
         /*if(count((array)$profile_info) > 0){
             return count((array)$profile_info);
@@ -26,7 +27,7 @@ class ProfilesController extends Controller
             return count((array)$profile_info);
         }*/
 
-        return view('profile')->with('user', $user)->with('profile_info', $profile_info);
+        return view('profile')->with('user', $user)->with('profile_info', $profile_info)->with('postsArray', $postsArray);
 
     }
 

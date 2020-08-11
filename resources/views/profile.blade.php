@@ -41,6 +41,29 @@
 
         <small>Joined on: {{date('d-m-Y', strtotime($user->created_at))}}</small>
 
+        <section id="posts" style="margin-top: 3em;">
+
+            <h2>User's posts</h2>
+
+            @foreach($postsArray as $post)
+
+                <div class="card card-body">
+                    <h2><a href="http://localhost/lsapp/public/posts/{{$post->id}}" >{{$post->title}}</a></h2>
+                    <p>{{$post->body}}</p>
+                    <small>{{date('d-m-Y', strtotime($post->created_at))}}</small>
+                    <small><a href="http://localhost/lsapp/public/profile/{{$post->user_id}}">{{$post->name}}</a></small>
+                </div>
+
+            @endforeach
+
+            @if(count($postsArray) < 1)
+
+                <p style="margin-top: 3em">No posts found</p>
+
+            @endif
+
+        </section>
+
     </div>
 
 
