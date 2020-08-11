@@ -27,7 +27,7 @@
 
                     <th>Bio:</th>
                     <td style="white-space: pre-wrap;">
-                        <input name="bio" value="@if(isset($profile_info['bio'])) {{$profile_info->bio}} @endif">
+                        <textarea name="bio">@if(isset($profile_info['bio'])) {{$profile_info->bio}} @endif</textarea>
                     </td>
                 
                 </tr>
