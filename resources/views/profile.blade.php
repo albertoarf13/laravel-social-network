@@ -15,6 +15,8 @@
     <div class="card card-body">
         <h2 style="margin-bottom: 1em;">{{$user->name}}</h2>
 
+        <p><strong>{{$followerCount}}</strong> followers</p>
+
         @if($profile_exists)
 
             <table class="table">

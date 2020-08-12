@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Auth;
 use App\Profile;
+use Illuminate\Support\Facades\DB;
 
 class ProfilesController extends Controller
 {
@@ -14,6 +15,15 @@ class ProfilesController extends Controller
         $this->middleware('auth', ['except' => ['profile']]);
     }
 
+    public function followerCount($id){
+
+        $results = DB::select('SELECT count(*) as followerCount
+                                FROM follows
+                                WHERE followee_id = '.$id);
+
+        return $results;
+
+    }
 
     public function profile($id){
 
@@ -27,7 +37,10 @@ class ProfilesController extends Controller
             return count((array)$profile_info);
         }*/
 
-        return view('profile')->with('user', $user)->with('profile_info', $profile_info)->with('postsArray', $postsArray);
+        $followerCount = $this->followerCount($id)[0]->followerCount;
+
+
+        return view('profile')->with('user', $user)->with('profile_info', $profile_info)->with('postsArray', $postsArray)->with('followerCount', $followerCount);
 
     }
 
