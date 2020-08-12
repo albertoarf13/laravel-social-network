@@ -15,7 +15,7 @@ class ProfilesController extends Controller
         $this->middleware('auth', ['except' => ['profile']]);
     }
 
-    public function followerCount($id){
+    public function getFollowerCount($id){
 
         $results = DB::select('SELECT count(*) as followerCount
                                 FROM follows
@@ -23,6 +23,25 @@ class ProfilesController extends Controller
 
         return $results;
 
+    }
+
+    public function getFollowingCount($id){
+
+        $results = DB::select('SELECT count(*) as followingCount
+                                FROM follows
+                                WHERE follower_id = '.$id);
+
+        return $results;
+
+    }
+
+    public function getPostCount($id){
+
+        $results = DB::select('SELECT count(*) as postCount
+                                FROM posts
+                                WHERE user_id = '.$id);
+
+        return $results;
     }
 
     public function profile($id){
@@ -37,10 +56,14 @@ class ProfilesController extends Controller
             return count((array)$profile_info);
         }*/
 
-        $followerCount = $this->followerCount($id)[0]->followerCount;
+        
+
+        $profile_info->followerCount = $this->getFollowerCount($id)[0]->followerCount;
+        $profile_info->followingCount = $this->getFollowingCount($id)[0]->followingCount;
+        $profile_info->postCount = $this->getPostCount($id)[0]->postCount;
 
 
-        return view('profile')->with('user', $user)->with('profile_info', $profile_info)->with('postsArray', $postsArray)->with('followerCount', $followerCount);
+        return view('profile')->with('user', $user)->with('profile_info', $profile_info)->with('postsArray', $postsArray);
 
     }
 

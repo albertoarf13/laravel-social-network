@@ -15,7 +15,11 @@
     <div class="card card-body">
         <h2 style="margin-bottom: 1em;">{{$user->name}}</h2>
 
-        <p><strong>{{$followerCount}}</strong> followers</p>
+        <div style="display: flex; margin-bottom: 3em;">
+            <span style="margin-right: 3em"><strong>{{$profile_info->postCount}}</strong> posts</span>
+            <span style="margin-right: 3em"><strong>{{$profile_info->followerCount}}</strong> followers</span>
+            <span style="margin-right: 3em"><strong>{{$profile_info->followingCount}}</strong> following</span>
+        </div>
 
         @if($profile_exists)
 
